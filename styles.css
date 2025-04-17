@@ -1,3 +1,108 @@
 body {
-    background-color: lightblue;
-}
+    background-color: blue;
+  }
+  body {
+    color: white;
+  }
+  h {
+    color: white;
+    font-size: 100px;
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    font-weight: bold;
+    line-height: 1;
+    padding-top: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+  }
+  p {
+    color: white;
+    font-size: 25px;
+    font-family: Helvetica, sans-serif;
+    text-align: left;
+    font-weight: bold;
+    line-height: 50px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+  }
+  hr {
+    line-height: 0px;
+  }
+  p1 {
+    color: white;
+    font-size: 30px;
+    font-family: Helvetica, sans-serif;
+    text-align: left;
+    font-weight: bold;
+    line-height: 10px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+  }
+  ul {
+    list-style-type: square; /* options: disc, circle, square, none */
+    font-size: 15px;
+    font-family: Helvetica, sans-serif;
+    line-height: 35px;
+  }
+  ul2 {
+    list-style-type: square; /* options: disc, circle, square, none */
+    font-size: 15px;
+    font-family: Helvetica, sans-serif;
+    line-height: 50px;
+  }
+  ul3 {
+    list-style-type: square; /* options: disc, circle, square, none */
+    font-size: 15px;
+    font-family: Helvetica, sans-serif;
+    line-height: 50px;
+  }
+  hr {
+    border: none;
+    height: 2px;
+    background-color: white; /* or any color */
+    margin: 40px 0; /* spacing above/below */
+  }
+  p2 {
+    color: white;
+    font-size: 30px;
+    font-family: Helvetica, sans-serif;
+    text-align: left;
+    font-weight: bold;
+    line-height: 10px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+  }
+  p3 {
+    color: white;
+    font-size: 30px;
+    font-family: Helvetica, sans-serif;
+    text-align: left;
+    font-weight: bold;
+    line-height: 10px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+  }
+  .bouncy-text {
+    display: inline-block;
+    color: white;
+    font-size: 120px;
+    animation: bounceScale 1s infinite ease-in-out;
+  }
+  
+  @keyframes bounceScale {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-10px) scale(1.2);
+    }
+  }

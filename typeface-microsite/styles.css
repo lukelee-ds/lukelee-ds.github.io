@@ -1,0 +1,61 @@
+@font-face {
+    font-family: "custom-font";
+    src: url("THEHOOKFONT.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+h{
+    font-family: "custom-font";
+    font-size: 200px;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+.scrolling-text {
+    font-family: "custom-font";
+    display: inline-block;
+    padding-left: 100%;
+    animation: scroll-left 50s linear infinite;
+    font-size: 800px;
+    color: white;
+    margin-top: auto;
+  }
+  
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+body {
+    background-color: black;
+  }
+  .scroll-wrapper {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+  h1 {
+font-family: "custom-font";
+  }
+  .bouncy-text {
+    display: inline-block;
+    color: white;
+    font-size: 120px;
+    animation: bounceScale 1s infinite ease-in-out;
+  }
+  
+  @keyframes bounceScale {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-10px) scale(1.2);
+    }
+  }
+
+
+  
