@@ -1,6 +1,6 @@
 @font-face {
     font-family: "custom-font";
-    src: url("THEHOOKFONT.woff") format("woff");
+    src: url("HOOKING\ FONT.woff") format("woff");
     font-weight: normal;
     font-style: normal;
 }
@@ -11,51 +11,285 @@ h{
     padding-left: 20px;
     padding-right: 20px;
   }
-.scrolling-text {
-    font-family: "custom-font";
-    display: inline-block;
-    padding-left: 100%;
-    animation: scroll-left 50s linear infinite;
-    font-size: 800px;
-    color: white;
-    margin-top: auto;
-  }
-  
-  @keyframes scroll-left {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
+  body {
+  margin: 0;
+  background-color: #0d1b2a;
+  overflow: hidden;
+  transition: background-color 0.8s ease;
+}
+
+
+body.inverse {
+  background-color: white;
+}
+
+.hook-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+}
+
+.line {
+  width: 2px;
+  height: 200px;
+  background-color: white;
+  transition: background-color 0.8s ease, height 0.4s ease;
+}
+
+body.inverse .line {
+  background-color: black;
+}
+
+.hook-letter {
+  font-family: "custom-font", serif;
+  font-size: 200px;
+  color: white;
+  margin-top: 0;
+  cursor: grab;
+  transition: transform 0.2s ease, opacity 0.6s ease;
+  transform-origin: top center;
+}
+
+body.inverse .hook-letter {
+  color: black;
+}
+
+.alphabet-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  grid-auto-rows: minmax(150px, auto);  
+  padding: 60px;
+  gap: 40px;
+  width: 100%;
+  box-sizing: border-box;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 3s ease;
+}
+
+body.inverse .alphabet-container {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.alphabet-container span {
+  font-family: "custom-font", serif;
+  font-size: 20vw;
+  color: white;
+  line-height: 1;
+  text-align: center;
+  transition: color 0.8s ease;
+}
+
+body.inverse .alphabet-container span {
+  color: black;
+}
 body {
-    background-color: black;
+  margin: 0;
+  background-color: #0d1b2a;
+  transition: background-color 0.8s ease;
+  overflow-y: auto;
+  height: auto;
+  min-height: 100vh;
+}
+body:not(.inverse) {
+  overflow: hidden;
+}
+
+body.ripple::before {
+  content: '';
+  position: absolute;
+  top: var(--ripple-y, 50%);
+  left: var(--ripple-x, 50%);
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: ripple-effect 1s infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes ripple-effect {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 0.4;
   }
-  .scroll-wrapper {
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    box-sizing: border-box;
+  50% {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0.15;
   }
-  h1 {
-font-family: "custom-font";
+  100% {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
   }
-  .bouncy-text {
-    display: inline-block;
-    color: white;
-    font-size: 120px;
-    animation: bounceScale 1s infinite ease-in-out;
-  }
-  
-  @keyframes bounceScale {
-    0%, 100% {
-      transform: translateY(0) scale(1);
-    }
-    50% {
-      transform: translateY(-10px) scale(1.2);
-    }
-  }
+}
+#hook-title {
+  font-family: "custom-font", serif;
+  font-size: 2vw;
+  text-align: center;
+  color: black;
+  opacity: 0;
+  margin-top: 40px;
+  transition: opacity 1s ease;
+}
+
+body:not(.inverse) #hook-title {
+  color: white;
+}
+body.inverse.show-title #hook-title {
+  opacity: 1;
+}
+.alphabet-container span {
+  font-family: "custom-font", serif;
+  font-size: 20vw;
+  color: white;
+  line-height: 1;
+  text-align: center;
+  transition: 
+    color 0.8s ease,
+    transform 0.2s ease,
+    font-variant 0.2s ease;
+  text-transform: uppercase;
+}
+
+.alphabet-container span:hover {
+  text-transform: lowercase;
+}
+.alphabet-container span:hover {
+  text-transform: lowercase;
+  transform: scale(1.05);
+}
+.alphabet-container span {
+  font-family: "custom-font", serif;
+  font-size: 20vw;
+  color: white;
+  line-height: 1;
+  text-align: center;
+  transition:
+    color 0.8s ease,
+    transform 0.3s ease,
+    opacity 0.3s ease;
+  text-transform: uppercase;
+  cursor: pointer;
+}
 
 
-  
+
+.alphabet-container.focused span {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.alphabet-container.focused span.focus-target {
+  opacity: 1;
+  position: fixed;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%) scale(4);
+  transform-origin: top center;
+  z-index: 10;
+  transition:
+    transform 0.3s ease,
+    color 0.8s ease,
+    text-transform 0.3s ease;
+  cursor: pointer;
+  text-transform: uppercase; 
+}
+
+.alphabet-container.focused span.focus-target:hover {
+  text-transform: lowercase;
+  transform: translateX(-50%) scale(4.2);
+}
+
+#reset-view {
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  padding: 12px 20px;
+  font-size: 18px;
+  font-family: sans-serif;
+  background: black;
+  color: white;
+  border: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 20;
+}
+
+body.zoomed-in #reset-view {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#hook-title {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background-color: white;
+  padding: 20px 0;
+}
+#tension-meter {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 10px;
+  height: 200px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 999;
+}
+
+#tension-fill {
+  width: 100%;
+  height: 0%;
+  background-color: white;
+  transition: height 0.1s ease;
+  border-radius: 5px;
+}
+
+
+
+#hook-game-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-family: "custom-font", serif;
+  font-size: 16px;
+  padding: 10px 14px;
+  color: white;
+  background-color: transparent;
+  border: 1px solid white;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+#hook-game {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #0d1b2a;
+  display: none;
+  z-index: 999;
+}
+
+#hook-game.active {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
