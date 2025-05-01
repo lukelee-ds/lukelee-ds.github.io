@@ -46,19 +46,19 @@ body {
     padding-left: 5px;
   }
   ul {
-    list-style-type: square; /* options: disc, circle, square, none */
+    list-style-type: square;
     font-size: 15px;
     font-family: Helvetica, sans-serif;
     line-height: 35px;
   }
   ul2 {
-    list-style-type: square; /* options: disc, circle, square, none */
+    list-style-type: square;
     font-size: 15px;
     font-family: Helvetica, sans-serif;
     line-height: 50px;
   }
   ul3 {
-    list-style-type: square; /* options: disc, circle, square, none */
+    list-style-type: square; 
     font-size: 15px;
     font-family: Helvetica, sans-serif;
     line-height: 50px;
@@ -66,8 +66,8 @@ body {
   hr {
     border: none;
     height: 2px;
-    background-color: white; /* or any color */
-    margin: 40px 0; /* spacing above/below */
+    background-color: white;
+    margin: 40px 0; 
   }
   p2 {
     color: white;
